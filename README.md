@@ -1,10 +1,10 @@
-#Super heros, teams and villians
+# Super heros, teams and villians
 
-##Problem
+## Problem
 There are too many heros to keep track of, we need a superhero registration
 database to track heros, their powers and allies, and their villians.
 
-##User stories
+## User stories
 1. each hero
   * will have a name
   * will have a super power
@@ -17,5 +17,5 @@ database to track heros, their powers and allies, and their villians.
 3. each team
   * will have a name
   * will have many heros
-##Schema
+## Schema
 ![superhero schema](/screenshot.png)
