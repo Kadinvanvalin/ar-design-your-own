@@ -2,21 +2,13 @@
 require 'faker'
 
 # Seed hero table
-hero_details = {  :name     => Faker::Superhero.name,
-                  :power    => Faker::Superhero.power}
+x = 50
 
-Superhero.create(hero_details)
-# tenley.save
 
-# Dog.create(jayda_details)
-
-# # Dog.find_or_create_by(name: "Eleanor") do |dog|
-# #   dog.license  = "OH-9843098"
-# #   dog.age      = 1
-# #   dog.breed    = "Pit Bull"
-# #   dog.owner_id = 3
-# # end
-
+x.times {  Hero.create(:name     => Faker::Superhero.name, :power    => Faker::Superhero.power) }
+x.times {  Villian.create(:name     => Faker::Superhero.name, :power    => Faker::Superhero.power, :hero_id => rand(x) + 1) }
+(x/5).times { Team.create(:name => Faker::Team.name) }
+x.times {HeroTeam.create(:hero_id => rand(x) + 1, :team_id => rand(x) + 1) }
 
 # # Seed ratings table
 # Rating.create([

@@ -5,6 +5,15 @@ require 'rspec/core/rake_task'
 require_relative 'config/application'
 
 namespace :db do
+  desc "drops, creates, migrates then seeds the DB"
+  task :reboot do
+    puts "RAKEMASTER::5,000::Have you tried turning it off and on again?"
+    Rake::Task["db:drop"].invoke
+    Rake::Task["db:create"].invoke
+    Rake::Task["db:migrate"].invoke
+    Rake::Task["db:seed"].invoke
+  end
+
   desc "create the database"
   task :create  do
     puts "RAKEMASTER::5,000::Creating file #{DB_PATH} if it doesn't exist"
@@ -30,16 +39,13 @@ namespace :db do
   task :seed do
     #require the path to the seeds file?
     require APP_ROOT.join('db', 'seeds.rb')
+    puts "RAKEMASTER::5,000::seeding. . . "
   end
 
   desc 'Retreves the current schema version number'
   task :version do
     puts "RAKEMASTER::5,000:: Current version : #{ActiveRecord::Migrator.current_version}"
   end
-
-
-
-
 end
 
 namespace :generate do
