@@ -2,5 +2,5 @@ source :rubygems
 
 gem 'activerecord'
 gem 'sqlite3'
-gem 'faker'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem 'rspec'

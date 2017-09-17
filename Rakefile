@@ -1,5 +1,9 @@
 require 'rake'
 require 'rspec/core/rake_task'
+
+
+require_relative 'config/application'
+
 namespace :db do
   desc "create the database"
   task :create  do
@@ -30,7 +34,7 @@ namespace :db do
 
   desc 'Retreves the current schema version number'
   task :version do
-    puts"RAKEMASTER::5,000:: Current version : #{ActiveRecord::Migrator,current_version}"
+    puts "RAKEMASTER::5,000:: Current version : #{ActiveRecord::Migrator.current_version}"
   end
 
 
@@ -48,7 +52,7 @@ namespace :generate do
     #the inverse of #underscore to the name of our filename to be
     name  = ENV['NAME'].camelize
     #this is creating a timestamp for the migration, and putting the timestamp and name assigned into a variable
-    filename = "%s_%s.rb" % [Time.now.strfttime('%Y%m%d%H%M%S'), ENV['NAME'].underscore]
+    filename = "%s_%s.rb" % [Time.now.strftime('%Y%m%d%H%M%S'), ENV['NAME'].underscore]
     #building a path for our file
     path = APP_ROOT.join('db','migrate',filename)
 
